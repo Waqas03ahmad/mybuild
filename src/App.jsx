@@ -1,13 +1,11 @@
-
+import MainComponent from "./MainIndex";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>waqas</div>
+      <MainComponent />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

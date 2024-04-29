@@ -8,18 +8,42 @@ import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import { Button } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { modechanger } from "./store/ToggleState";
+import Collapse from "@mui/material/Collapse";
+import ExpandLess from "@mui/icons-material/ExpandLess";
+import ExpandMore from "@mui/icons-material/ExpandMore";
+import StarBorder from "@mui/icons-material/StarBorder";
 
 const drawerWidth = 240;
 
 function MainComponent(props) {
+  const [open, setOpen] = React.useState(true);
+
+  const handleClick = () => {
+    setOpen(!open);
+  };
+
+  const [open1, setOpen1] = React.useState(true);
+
+  const handleClick1 = () => {
+    setOpen1(!open1);
+  };
+
+  const [open2, setOpen2] = React.useState(true);
+
+  const handleClick2 = () => {
+    setOpen2(!open2);
+  };
+
+  const dispatch = useDispatch();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
@@ -43,24 +67,65 @@ function MainComponent(props) {
     <div>
       <Toolbar />
       <Divider />
-      <List>
-        {[
-          "Dashboard",
-          "Professors",
-          "Courses",
-          "TopStudents",
-          "Events",
-          "Books",
-        ].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
+      <List
+        sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+        component="nav"
+        aria-labelledby="nested-list-subheader"
+      >
+        <ListItemButton>
+          <ListItemIcon>
+            <InboxIcon />
+          </ListItemIcon>
+          <ListItemText primary="Dashboard" />
+        </ListItemButton>
+
+        <ListItemButton onClick={handleClick}>
+          <ListItemIcon>
+            <InboxIcon />
+          </ListItemIcon>
+          <ListItemText primary="Professors" />
+          {open ? <ExpandLess /> : <ExpandMore />}
+        </ListItemButton>
+        <Collapse in={open} timeout="auto" unmountOnExit>
+          <List component="div" sx={{ marginY: 0, paddingY: 0 }}>
+            <ListItemButton sx={{ pl: 4, marginY: 0, paddingY: 0 }}>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                <StarBorder />
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary="AllProfessor" />
             </ListItemButton>
-          </ListItem>
-        ))}
+            <ListItemButton sx={{ pl: 4, marginY: 0, paddingY: 0 }}>
+              <ListItemIcon>
+                <StarBorder />
+              </ListItemIcon>
+              <ListItemText primary="AllProfessor" />
+            </ListItemButton>
+            <ListItemButton sx={{ pl: 4, marginY: 0, paddingY: 0 }}>
+              <ListItemIcon>
+                <StarBorder />
+              </ListItemIcon>
+              <ListItemText primary="AllProfessor" />
+            </ListItemButton>
+          </List>
+        </Collapse>
+
+        <ListItemButton onClick={handleClick2}>
+          <ListItemIcon>
+            <InboxIcon />
+          </ListItemIcon>
+          <ListItemText primary="Inbox" />
+          {open2 ? <ExpandLess /> : <ExpandMore />}
+        </ListItemButton>
+        <Collapse in={open2} timeout="auto" unmountOnExit>
+          <List component="div">
+            <ListItemButton sx={{ pl: 4, marginY: 0, paddingY: 0 }}>
+              <ListItemIcon>
+                <StarBorder />
+              </ListItemIcon>
+              <ListItemText primary="Starred" />
+            </ListItemButton>
+          </List>
+        </Collapse>
       </List>
     </div>
   );
@@ -87,7 +152,7 @@ function MainComponent(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Responsive drawer
+            GCMS
           </Typography>
         </Toolbar>
       </AppBar>
@@ -154,6 +219,7 @@ function MainComponent(props) {
           lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien
           faucibus et molestie ac.
         </Typography>
+        <Button onClick={() => dispatch(modechanger())}>click</Button>
         <Typography paragraph>
           Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
           ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar

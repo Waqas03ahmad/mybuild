@@ -6,7 +6,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -20,29 +19,47 @@ import { modechanger } from "./store/ToggleState";
 import Collapse from "@mui/material/Collapse";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
-import StarBorder from "@mui/icons-material/StarBorder";
+import { NavLink } from "react-router-dom";
+import { FaUserTie } from "react-icons/fa6";
+import { FaUserGroup } from "react-icons/fa6";
+import { FaBookReader } from "react-icons/fa";
+import { MdDashboard } from "react-icons/md";
+import { FaGreaterThan } from "react-icons/fa6";
+import { FaBook } from "react-icons/fa";
+import { IoBookOutline } from "react-icons/io5";
+import { FaClipboardList } from "react-icons/fa";
+import { FaClipboardCheck } from "react-icons/fa";
+
+
 
 const drawerWidth = 240;
 
 function MainComponent(props) {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
+  const [open1, setOpen1] = React.useState(false);
+  const [open2, setOpen2] = React.useState(false);
+  const [open3, setOpen3] = React.useState(false);
+  const [open4, setOpen4] = React.useState(false);
 
   const handleClick = () => {
     setOpen(!open);
   };
 
-  const [open1, setOpen1] = React.useState(true);
-
   const handleClick1 = () => {
     setOpen1(!open1);
   };
-
-  const [open2, setOpen2] = React.useState(true);
 
   const handleClick2 = () => {
     setOpen2(!open2);
   };
 
+  const handleClick3 = () => {
+    setOpen3(!open3);
+  };
+
+  const handleClick4 = () => {
+    setOpen4(!open4);
+  };
   const dispatch = useDispatch();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -72,58 +89,213 @@ function MainComponent(props) {
         component="nav"
         aria-labelledby="nested-list-subheader"
       >
-        <ListItemButton>
+        <ListItemButton component={NavLink} to={"/"}>
           <ListItemIcon>
-            <InboxIcon />
+            <MdDashboard size={25} />
           </ListItemIcon>
           <ListItemText primary="Dashboard" />
         </ListItemButton>
 
         <ListItemButton onClick={handleClick}>
           <ListItemIcon>
-            <InboxIcon />
+            <FaUserTie size={25} />
           </ListItemIcon>
           <ListItemText primary="Professors" />
           {open ? <ExpandLess /> : <ExpandMore />}
         </ListItemButton>
         <Collapse in={open} timeout="auto" unmountOnExit>
           <List component="div" sx={{ marginY: 0, paddingY: 0 }}>
+            <ListItemButton
+              sx={{ pl: 4, marginY: 0, paddingY: 0 }}
+              component={NavLink}
+              to={"/D.Com"}
+            >
+              <ListItemIcon>
+                <FaGreaterThan />
+              </ListItemIcon>
+              <ListItemText primary="D.Com" />
+            </ListItemButton>
+            <ListItemButton
+              sx={{ pl: 4, marginY: 0, paddingY: 0 }}
+              component={NavLink}
+              to={"/BSCS"}
+            >
+              <ListItemIcon>
+                <FaGreaterThan />
+              </ListItemIcon>
+              <ListItemText primary="BSCS" />
+            </ListItemButton>
+            <ListItemButton
+              sx={{ pl: 4, marginY: 0, paddingY: 0 }}
+              component={NavLink}
+              to={"/DIT"}
+            >
+              <ListItemIcon>
+                <FaGreaterThan />
+              </ListItemIcon>
+              <ListItemText primary="DIT" />
+            </ListItemButton>
+          </List>
+        </Collapse>
+
+        <ListItemButton onClick={handleClick1}>
+          <ListItemIcon>
+            <FaUserGroup size={25} />
+          </ListItemIcon>
+          <ListItemText primary="Students" />
+          {open1 ? <ExpandLess /> : <ExpandMore />}
+        </ListItemButton>
+        <Collapse in={open1} timeout="auto" unmountOnExit>
+          <List component="div" sx={{ marginY: 0, paddingY: 0 }}>
             <ListItemButton sx={{ pl: 4, marginY: 0, paddingY: 0 }}>
               <ListItemIcon>
-                <StarBorder />
+                <FaGreaterThan />
               </ListItemIcon>
-              <ListItemText primary="AllProfessor" />
+              <ListItemText primary="All" />
             </ListItemButton>
             <ListItemButton sx={{ pl: 4, marginY: 0, paddingY: 0 }}>
               <ListItemIcon>
-                <StarBorder />
+                <FaGreaterThan />
               </ListItemIcon>
-              <ListItemText primary="AllProfessor" />
+              <ListItemText primary="TopStudents" />
             </ListItemButton>
             <ListItemButton sx={{ pl: 4, marginY: 0, paddingY: 0 }}>
               <ListItemIcon>
-                <StarBorder />
+                <FaGreaterThan />
               </ListItemIcon>
-              <ListItemText primary="AllProfessor" />
+              <ListItemText primary="WarnnedStudents" />
             </ListItemButton>
           </List>
         </Collapse>
 
         <ListItemButton onClick={handleClick2}>
           <ListItemIcon>
-            <InboxIcon />
+            <FaBookReader size={25} />
           </ListItemIcon>
-          <ListItemText primary="Inbox" />
+          <ListItemText primary="Courses" />
           {open2 ? <ExpandLess /> : <ExpandMore />}
         </ListItemButton>
         <Collapse in={open2} timeout="auto" unmountOnExit>
-          <List component="div">
+          <List component="div" sx={{ marginY: 0, paddingY: 0 }}>
             <ListItemButton sx={{ pl: 4, marginY: 0, paddingY: 0 }}>
               <ListItemIcon>
-                <StarBorder />
+                <FaGreaterThan />
               </ListItemIcon>
-              <ListItemText primary="Starred" />
+              <ListItemText primary="DIT" />
             </ListItemButton>
+            <ListItemButton sx={{ pl: 4, marginY: 0, paddingY: 0 }}>
+              <ListItemIcon>
+                <FaGreaterThan />
+              </ListItemIcon>
+              <ListItemText primary="BSCS" />
+            </ListItemButton>
+            <ListItemButton sx={{ pl: 4, marginY: 0, paddingY: 0 }}>
+              <ListItemIcon>
+                <FaGreaterThan />
+              </ListItemIcon>
+              <ListItemText primary="D.Com" />
+            </ListItemButton>
+            <ListItemButton sx={{ pl: 4, marginY: 0, paddingY: 0 }}>
+              <ListItemIcon>
+                <FaGreaterThan />
+              </ListItemIcon>
+              <ListItemText primary="BS.Commerce" />
+            </ListItemButton>
+          </List>
+        </Collapse>
+
+        <ListItemButton onClick={handleClick3}>
+          <ListItemIcon>
+            <FaBook size={25} />
+          </ListItemIcon>
+          <ListItemText primary="Books" />
+          {open3 ? <ExpandLess /> : <ExpandMore />}
+        </ListItemButton>
+        <Collapse in={open3} timeout="auto" unmountOnExit>
+          <List component="div" sx={{ marginY: 0, paddingY: 0 }}>
+            <ListItemButton
+              sx={{ pl: 4, marginY: 0, paddingY: 0 }}
+              component={NavLink}
+              to={"/ditbooks"}
+            >
+              <ListItemIcon>
+                <IoBookOutline />
+              </ListItemIcon>
+              <ListItemText primary="DIT Books" />
+            </ListItemButton>
+            <ListItemButton
+              sx={{ pl: 4, marginY: 0, paddingY: 0 }}
+              component={NavLink}
+              to={"/bscsbooks"}
+            >
+              <ListItemIcon>
+                <IoBookOutline />
+              </ListItemIcon>
+              <ListItemText primary="BSCS Books" />
+            </ListItemButton>
+            <ListItemButton
+              sx={{ pl: 4, marginY: 0, paddingY: 0 }}
+              component={NavLink}
+              to={"/dcom"}
+            >
+              <ListItemIcon>
+                <IoBookOutline />
+              </ListItemIcon>
+              <ListItemText primary="D.Com Books" />
+            </ListItemButton>
+            <ListItemButton
+              sx={{ pl: 4, marginY: 0, paddingY: 0 }}
+              component={NavLink}
+              to={"/bscommerbooks"}
+            >
+              <ListItemIcon>
+                <IoBookOutline />
+              </ListItemIcon>
+              <ListItemText primary="BS.Com Books" />
+            </ListItemButton>
+          </List>
+        </Collapse>
+
+        <ListItemButton onClick={handleClick4}>
+          <ListItemIcon>
+            <FaClipboardList size={25} />
+          </ListItemIcon>
+          <ListItemText primary="Notice Board" />
+          {open4 ? <ExpandLess /> : <ExpandMore />}
+        </ListItemButton>
+        <Collapse in={open4} timeout="auto" unmountOnExit>
+          <List component="div" sx={{ marginY: 0, paddingY: 0 }}>
+            <ListItemButton
+              sx={{ pl: 4, marginY: 0, paddingY: 0 }}
+              component={NavLink}
+              to={"/ditbooks"}
+            >
+              <ListItemIcon>
+                <FaClipboardCheck />
+              </ListItemIcon>
+              <ListItemText primary="Recent" />
+            </ListItemButton>
+            <ListItemButton
+              sx={{ pl: 4, marginY: 0, paddingY: 0 }}
+              component={NavLink}
+              to={"/bscsbooks"}
+            >
+              <ListItemIcon>
+                <FaClipboardCheck />
+              </ListItemIcon>
+              <ListItemText primary="Prev_Months" />
+            </ListItemButton>
+            <ListItemButton
+              sx={{ pl: 4, marginY: 0, paddingY: 0 }}
+              component={NavLink}
+              to={"/dcom"}
+            >
+              <ListItemIcon>
+                <FaClipboardCheck />
+              </ListItemIcon>
+              <ListItemText primary="Warnings" />
+            </ListItemButton>
+      
           </List>
         </Collapse>
       </List>

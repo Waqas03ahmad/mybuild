@@ -34,7 +34,7 @@ export default function TeacherCard() {
           }}
         >
           <div>
-            <img src="../../../public/sajjad.png" alt="teacher"  />
+            <img src="https://res.cloudinary.com/dt6z3lqko/image/upload/v1714834988/sajjad_supjyp.png" alt="teacher"  />
           </div>
         </AspectRatio>
       </CardOverflow>

@@ -13,13 +13,12 @@ import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Button } from "@mui/material";
-import { useDispatch } from "react-redux";
-import { modechanger } from "./store/ToggleState";
+// import { useDispatch } from "react-redux";
+// import { modechanger } from "./store/ToggleState";
 import Collapse from "@mui/material/Collapse";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
-import { NavLink } from "react-router-dom";
+import { NavLink, Route, Routes } from "react-router-dom";
 import { FaUserTie } from "react-icons/fa6";
 import { FaUserGroup } from "react-icons/fa6";
 import { FaBookReader } from "react-icons/fa";
@@ -29,21 +28,27 @@ import { FaBook } from "react-icons/fa";
 import { IoBookOutline } from "react-icons/io5";
 import { FaClipboardList } from "react-icons/fa";
 import { FaClipboardCheck } from "react-icons/fa";
-
-
+import "../src/mainindex.css";
+// import CardComponent from "./assets/Card/Card";
+import Dit from "./students/Dit";
+import Dcom from "./students/Dcom";
+import Course from "./pages/course/Course";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import Professor from "./pages/professor/Professor";
+import Bscs from "./students/Bscs";
 
 const drawerWidth = 240;
 
 function MainComponent(props) {
-  const [open, setOpen] = React.useState(false);
+  // const [open, setOpen] = React.useState(false);
   const [open1, setOpen1] = React.useState(false);
   const [open2, setOpen2] = React.useState(false);
   const [open3, setOpen3] = React.useState(false);
   const [open4, setOpen4] = React.useState(false);
 
-  const handleClick = () => {
-    setOpen(!open);
-  };
+  // const handleClick = () => {
+  //   setOpen(!open);
+  // };
 
   const handleClick1 = () => {
     setOpen1(!open1);
@@ -60,7 +65,7 @@ function MainComponent(props) {
   const handleClick4 = () => {
     setOpen4(!open4);
   };
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [isClosing, setIsClosing] = React.useState(false);
@@ -96,110 +101,58 @@ function MainComponent(props) {
           <ListItemText primary="Dashboard" />
         </ListItemButton>
 
-        <ListItemButton onClick={handleClick}>
+        <ListItemButton component={NavLink} to={"/professors"}>
           <ListItemIcon>
             <FaUserTie size={25} />
           </ListItemIcon>
           <ListItemText primary="Professors" />
-          {open ? <ExpandLess /> : <ExpandMore />}
         </ListItemButton>
-        <Collapse in={open} timeout="auto" unmountOnExit>
-          <List component="div" sx={{ marginY: 0, paddingY: 0 }}>
-            <ListItemButton
-              sx={{ pl: 4, marginY: 0, paddingY: 0 }}
-              component={NavLink}
-              to={"/D.Com"}
-            >
-              <ListItemIcon>
-                <FaGreaterThan />
-              </ListItemIcon>
-              <ListItemText primary="D.Com" />
-            </ListItemButton>
-            <ListItemButton
-              sx={{ pl: 4, marginY: 0, paddingY: 0 }}
-              component={NavLink}
-              to={"/BSCS"}
-            >
-              <ListItemIcon>
-                <FaGreaterThan />
-              </ListItemIcon>
-              <ListItemText primary="BSCS" />
-            </ListItemButton>
-            <ListItemButton
-              sx={{ pl: 4, marginY: 0, paddingY: 0 }}
-              component={NavLink}
-              to={"/DIT"}
-            >
-              <ListItemIcon>
-                <FaGreaterThan />
-              </ListItemIcon>
-              <ListItemText primary="DIT" />
-            </ListItemButton>
-          </List>
-        </Collapse>
+
+        <ListItemButton component={NavLink} to={"/course"}>
+          <ListItemIcon>
+            <FaBookReader size={25} />
+          </ListItemIcon>
+          <ListItemText primary="Courses" />
+        </ListItemButton>
 
         <ListItemButton onClick={handleClick1}>
           <ListItemIcon>
             <FaUserGroup size={25} />
           </ListItemIcon>
-          <ListItemText primary="Students" />
+          <ListItemText primary="Pos_Holders" />
           {open1 ? <ExpandLess /> : <ExpandMore />}
         </ListItemButton>
         <Collapse in={open1} timeout="auto" unmountOnExit>
           <List component="div" sx={{ marginY: 0, paddingY: 0 }}>
-            <ListItemButton sx={{ pl: 4, marginY: 0, paddingY: 0 }}>
+            <ListItemButton
+              sx={{ pl: 4, marginY: 0, paddingY: 0 }}
+              component={NavLink}
+              to={"/bscs"}
+            >
               <ListItemIcon>
                 <FaGreaterThan />
               </ListItemIcon>
-              <ListItemText primary="All" />
+              <ListItemText primary="Bscs" />
             </ListItemButton>
-            <ListItemButton sx={{ pl: 4, marginY: 0, paddingY: 0 }}>
+            <ListItemButton
+              sx={{ pl: 4, marginY: 0, paddingY: 0 }}
+              component={NavLink}
+              to={"/dcom"}
+            >
               <ListItemIcon>
                 <FaGreaterThan />
               </ListItemIcon>
-              <ListItemText primary="TopStudents" />
+              <ListItemText primary="D.Come" />
             </ListItemButton>
-            <ListItemButton sx={{ pl: 4, marginY: 0, paddingY: 0 }}>
+            <ListItemButton
+              sx={{ pl: 4, marginY: 0, paddingY: 0 }}
+              component={NavLink}
+              to={"/dit"}
+            >
               <ListItemIcon>
                 <FaGreaterThan />
               </ListItemIcon>
-              <ListItemText primary="WarnnedStudents" />
-            </ListItemButton>
-          </List>
-        </Collapse>
-
-        <ListItemButton onClick={handleClick2}>
-          <ListItemIcon>
-            <FaBookReader size={25} />
-          </ListItemIcon>
-          <ListItemText primary="Courses" />
-          {open2 ? <ExpandLess /> : <ExpandMore />}
-        </ListItemButton>
-        <Collapse in={open2} timeout="auto" unmountOnExit>
-          <List component="div" sx={{ marginY: 0, paddingY: 0 }}>
-            <ListItemButton sx={{ pl: 4, marginY: 0, paddingY: 0 }}>
-              <ListItemIcon>
-                <FaGreaterThan />
-              </ListItemIcon>
-              <ListItemText primary="DIT" />
-            </ListItemButton>
-            <ListItemButton sx={{ pl: 4, marginY: 0, paddingY: 0 }}>
-              <ListItemIcon>
-                <FaGreaterThan />
-              </ListItemIcon>
-              <ListItemText primary="BSCS" />
-            </ListItemButton>
-            <ListItemButton sx={{ pl: 4, marginY: 0, paddingY: 0 }}>
-              <ListItemIcon>
-                <FaGreaterThan />
-              </ListItemIcon>
-              <ListItemText primary="D.Com" />
-            </ListItemButton>
-            <ListItemButton sx={{ pl: 4, marginY: 0, paddingY: 0 }}>
-              <ListItemIcon>
-                <FaGreaterThan />
-              </ListItemIcon>
-              <ListItemText primary="BS.Commerce" />
+              <ListItemText primary="Dit" />
             </ListItemButton>
           </List>
         </Collapse>
@@ -295,7 +248,6 @@ function MainComponent(props) {
               </ListItemIcon>
               <ListItemText primary="Warnings" />
             </ListItemButton>
-      
           </List>
         </Collapse>
       </List>
@@ -376,36 +328,15 @@ function MainComponent(props) {
         }}
       >
         <Toolbar />
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus
-          dolor purus non enim praesent elementum facilisis leo vel. Risus at
-          ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum
-          quisque non tellus. Convallis convallis tellus id interdum velit
-          laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed
-          adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies
-          integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate
-          eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo
-          quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat
-          vivamus at augue. At augue eget arcu dictum varius duis at consectetur
-          lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien
-          faucibus et molestie ac.
-        </Typography>
-        <Button onClick={() => dispatch(modechanger())}>click</Button>
-        <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
-          ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
-          elementum integer enim neque volutpat ac tincidunt. Ornare suspendisse
-          sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat
-          mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis
-          risus sed vulputate odio. Morbi tincidunt ornare massa eget egestas
-          purus viverra accumsan in. In hendrerit gravida rutrum quisque non
-          tellus orci ac. Pellentesque nec nam aliquam sem et tortor. Habitant
-          morbi tristique senectus et. Adipiscing elit duis tristique
-          sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-          eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-          posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/Professors" element={<Professor />} />
+          <Route path="/bscs" element={<Bscs />} />
+          <Route path="/dit" element={<Dit />} />
+          <Route path="/dcom" element={<Dcom />} />
+          <Route path="/course" element={<Course />} />
+        </Routes>
+        {/* <Item onClick={() => dispatch(modechanger())}>clickeme</Item> */}
       </Box>
     </Box>
   );

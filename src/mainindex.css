@@ -1,0 +1,7 @@
+.MuiButtonBase-root.MuiButton-contained{
+  background-color: #dd2b2b41;
+  margin-left: '20px' !important;
+}
+.MuiButtonBase-root.MuiButton-contained:hover{
+  background-color: #1aee9d;
+}

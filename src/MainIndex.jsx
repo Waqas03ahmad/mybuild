@@ -42,7 +42,7 @@ const drawerWidth = 240;
 function MainComponent(props) {
   // const [open, setOpen] = React.useState(false);
   const [open1, setOpen1] = React.useState(false);
-  const [open2, setOpen2] = React.useState(false);
+  // const [open2, setOpen2] = React.useState(false);
   const [open3, setOpen3] = React.useState(false);
   const [open4, setOpen4] = React.useState(false);
 
@@ -54,9 +54,9 @@ function MainComponent(props) {
     setOpen1(!open1);
   };
 
-  const handleClick2 = () => {
-    setOpen2(!open2);
-  };
+  // const handleClick2 = () => {
+  //   setOpen2(!open2);
+  // };
 
   const handleClick3 = () => {
     setOpen3(!open3);

@@ -36,6 +36,16 @@ import Course from "./pages/course/Course";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Professor from "./pages/professor/Professor";
 import Bscs from "./students/Bscs";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+
+const theme = createTheme({
+  palette: {
+    primary:{
+      main:'#827717'
+    }
+  },
+});
 
 const drawerWidth = 240;
 
@@ -261,25 +271,28 @@ function MainComponent(props) {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar
-        position="fixed"
-        sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
-      >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            GCMS
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      <ThemeProvider theme={theme}>
+        <AppBar
+          position="fixed"
+          sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          elevation={0}
+        >
+          <Toolbar>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2, display: { sm: "none" } }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h6" noWrap component="div">
+              GCMS
+            </Typography>
+          </Toolbar>
+        </AppBar>
+      </ThemeProvider>
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
@@ -325,9 +338,11 @@ function MainComponent(props) {
           flexGrow: 1,
           p: 3,
           width: { sm: `calc(100% - ${drawerWidth}px)` },
+          bgcolor:"#f0f0f0"
         }}
       >
         <Toolbar />
+        
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/Professors" element={<Professor />} />

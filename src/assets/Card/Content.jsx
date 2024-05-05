@@ -18,10 +18,10 @@ export default function TeacherCard() {
         "--icon-size": "130px",
       }}
     >
-      <CardOverflow variant="solid" color="warning">
+      <CardOverflow variant="solid" sx={{bgcolor:'#827717'}}>
         <AspectRatio
           variant="outlined"
-          color="warning"
+          color="primary"
           ratio="1"
           sx={{
             m: "auto",

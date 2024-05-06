@@ -12,20 +12,19 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
   color: theme.palette.text.secondary,
 }));
-const Item1 = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  color: theme.palette.text.secondary,
-}));
 
 export default function Dashboard() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
-        
-        <Grid width={'100%'} height={'300px'} bgcolor={'gray'} item xs={12} sm={12}>
-        hellow
+        <Grid item xs={12} sm={4}>
+          <Card2/>
+        </Grid>
+        <Grid item xs={12} sm={4}>
+        <Card2/>
+        </Grid>
+        <Grid item xs={12} sm={4}>
+        <Card2/>
         </Grid>
         <Grid container spacing={2} item xs={12}>
         <Grid item xs={12} sm={8}>
